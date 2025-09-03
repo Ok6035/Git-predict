@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Termux Prediction & 999okwin Simulator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Termux Prediction System v1.2 — Web Tool</h1>
+    <nav>
+      <button id="tab-prediction" class="active">Prediction</button>
+      <button id="tab-hack">999okwin Simulator</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Prediction Panel -->
+    <section id="panel-prediction" class="panel">
+      <div class="card">
+        <h2>Prediction</h2>
+        <p>Enter a period number to compute Color, Number and Winning Probability (logic ported from your shell script).</p>
+
+        <label for="period-input">Period Number</label>
+        <input id="period-input" type="number" min="0" placeholder="e.g. 12345" />
+
+        <div class="controls">
+          <button id="predict-btn">Predict</button>
+          <button id="reset-predict-btn" class="muted">Reset</button>
+        </div>
+
+        <div id="prediction-output" class="output hidden">
+          <h3>Prediction Results</h3>
+          <div class="result-row"><span>Period Number:</span><strong id="out-period"></strong></div>
+          <div class="result-row"><span>Color Result:</span><strong id="out-color" class="chip"></strong></div>
+          <div class="result-row"><span>Number Result:</span><strong id="out-number"></strong></div>
+          <div class="result-row"><span>Winning Probability:</span><strong id="out-probability"></strong></div>
+          <div id="out-message" class="message"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hack Simulator Panel -->
+    <section id="panel-hack" class="panel hidden">
+      <div class="card">
+        <h2>999okwin Hack Simulator</h2>
+        <p>A front-end simulation of the original bash scripts: matrix effect, progress bars, accuracy and log generation.</p>
+
+        <label for="target-input">Target ID</label>
+        <input id="target-input" type="text" placeholder="Enter target ID (e.g. 999okwin123)" />
+
+        <div class="controls">
+          <button id="start-hack">Start Simulation</button>
+          <button id="abort-hack" class="muted">Abort</button>
+        </div>
+
+        <div id="sim-status" class="output hidden">
+          <div class="status-top">
+            <div>Last accuracy: <strong id="initial-accuracy">--%</strong></div>
+            <div>Final accuracy: <strong id="final-accuracy">--%</strong></div>
+            <div>Result: <strong id="sim-result">--</strong></div>
+          </div>
+
+          <div class="matrix-area" id="matrix-area" aria-hidden="true"></div>
+
+          <div class="progress-list">
+            <div class="progress-row"><span>Scanning</span><div class="progress"><div class="bar" id="pb-scan"></div></div></div>
+            <div class="progress-row"><span>Connecting</span><div class="progress"><div class="bar" id="pb-connect"></div></div></div>
+            <div class="progress-row"><span>Extracting</span><div class="progress"><div class="bar" id="pb-extract"></div></div></div>
+            <div class="progress-row"><span>Encrypting</span><div class="progress"><div class="bar" id="pb-encrypt"></div></div></div>
+            <div class="progress-row"><span>Transferring</span><div class="progress"><div class="bar" id="pb-transfer"></div></div></div>
+            <div class="progress-row"><span>Decrypting</span><div class="progress"><div class="bar" id="pb-decrypt"></div></div></div>
+          </div>
+
+          <div class="sim-logs">
+            <h4>Log</h4>
+            <pre id="log-box" class="logbox"></pre>
+            <div class="log-actions">
+              <button id="download-log">Download Log</button>
+              <button id="clear-log" class="muted">Clear Log</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Converted to a web tool by your assistant.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
